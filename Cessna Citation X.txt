@@ -1,0 +1,62 @@
+#Laminar Cessna Citation X
+#by ch4dwick - 2024/08/17
+#Updated for X-Plane 12 as per page 65 https://x-plane.com/manuals/737_Pilot_Operating_Manual.pdf
+sw_checklist:Preflight:Preflight
+sw_iteminfo:Cabin Door|CLOSED:(sim/cockpit2/switches/door_open[0]:0)
+sw_iteminfo:Parking Brake|SET:(sim/flightmodel/controls/parkbrake:>0)
+sw_continue
+
+sw_checklist:Preflight (1/4):Electrical Power
+sw_iteminfo:Battery 1 & 2|ON:(laminar/CitX/electrical/battery_left:1)&&(laminar/CitX/electrical/battery_right:1)
+sw_iteminfo:APU Master|ON:laminar/CitX/APU/master_switch:1
+sw_iteminfo:APU Lift, Wait, Release|START:laminar/CitX/APU/starter_switch:2
+sw_iteminfo:APU RPM|100%:sim/cockpit/engine/APU_N1:100
+sw_iteminfo:APU Generator|ON:laminar/CitX/APU/gen_switch:1
+sw_iteminfo:APU Bleed Air|ON:laminar/CitX/APU/bleed_air_switch:>0
+sw_iteminfo:Avionics|ON:sim/cockpit2/switches/avionics_power_on:1
+sw_iteminfo:EICAS|ON:sim/cockpit2/switches/gnd_com_power_on:1
+
+sw_checklist:Preflight (2/4):Engine Power
+# This is because you need to open the fuel valves slightly.
+sw_iteminfo:Throttle Left & Right to idle|SET:(laminar/CitX/throttle/ratio_L:>0)&&(laminar/CitX/throttle/ratio_R:>0)
+#sw_iteminfo:Ground Power|ON:laminar/CitX/electrical/ext_pwr:1
+sw_iteminfo:LH Engine Start|ON:laminar/CitX/engine/starter_left:1
+sw_iteminfo:LH Engine|Stable:sim/cockpit2/engine/indicators/N2_percent[0]:>64
+sw_iteminfo:RH Engine Start|ON:laminar/CitX/engine/starter_right:1
+sw_iteminfo:RH Engine|Stable:sim/cockpit2/engine/indicators/N2_percent[1]:>64
+sw_iteminfo:LH Generator|ON:laminar/CitX/electrical/generator_left:1
+sw_iteminfo:RH Generator|ON:laminar/CitX/electrical/generator_right:1
+sw_remark:Engines ON
+sw_continue
+
+sw_checklist:Preflight (3/4):Turn off after ignition
+sw_iteminfo:APU Bleed Air|OFF:laminar/CitX/APU/bleed_air_switch:0
+sw_iteminfo:APU Generator|OFF:laminar/CitX/APU/gen_switch:0
+sw_iteminfo:APU Stop Depress, Wait, Release|STOPPED:laminar/CitX/APU/starter_switch:0
+sw_iteminfo:APU RPM|OFF:sim/cockpit/engine/APU_N1:<1
+sw_iteminfo:APU Master|OFF:laminar/CitX/APU/master_switch:0
+sw_remark:APU OFF
+sw_continue
+
+sw_checklist:Preflight (4/4):Fuel
+sw_iteminfo:LH Center Wing Transfer|NORM:laminar/CitX/fuel/transfer_left:2
+sw_iteminfo:RH Center Wing Transfer|NORM:laminar/CitX/fuel/transfer_right:2
+sw_iteminfo:Master Warning|OFF:laminar/CitX/annunciators/master_warning:0
+sw_iteminfo:Master Caution|OFF:laminar/CitX/annunciators/master_caution:0
+sw_remark:FUEL ON
+sw_continue
+
+sw_checklist:Before Take-Off:Lighting
+sw_iteminfo:Ground Recognition Beacons and Anti-Collision Lights|ON:laminar/CitX/lights/gnd_rec_anti_coll:1
+sw_iteminfo:Fasten Steabelts Sign|ON:laminar/CitX/lights/seat_belt_pass_safety:1
+sw_iteminfo:Recognition Lights|ON:laminar/CitX/lights/recognition:1
+sw_iteminfo:Navigation Lights|ON:sim/cockpit2/switches/navigation_lights_on:1
+sw_iteminfo:Tail Flood Lights|ON:laminar/CitX/lights/tail_flood:1
+sw_iteminfo:Taxi Lights|ON:laminar/CitX/lights/taxi:1
+sw_remark:Lightning ON
+
+sw_checklist:Cabin Altitude Warning:Cabin Altitude
+sw_show:(sim/cockpit2/annunciators/cabin_altitude_12500:1)
+sw_iteminfo:APU Bleed Air|ON:laminar/CitX/APU/bleed_air_switch:>0
+sw_iteminfo:Engine 1 & 2 Bleed Air|ON:(sim/cockpit2/bleedair/actuators/engine_bleed_sov[0]:1)&&(sim/cockpit2/bleedair/actuators/engine_bleed_sov[1]:1)
+sw_iteminfo:Cabin & Cockpit Pack Switch|ON:(laminar/CitX/bleedair/air_cond_cockpit:>0)&&(laminar/CitX/bleedair/air_cond_cabin:>0)

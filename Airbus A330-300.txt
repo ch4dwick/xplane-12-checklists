@@ -1,0 +1,66 @@
+#Laminar Airbus A330-300
+#by ch4dwick - 2024/08/13
+#Updated for X-Plane 12 as per page 65 https://x-plane.com/manuals/737_Pilot_Operating_Manual.pdf
+sw_checklist:Preflight - Electrical (1/2):Power
+sw_show:(sim/cockpit2/engine/indicators/N2_percent[0]:0)&&(sim/cockpit2/engine/indicators/N2_percent[1]:0)
+sw_iteminfo:Parking Brake|SET:(sim/flightmodel/controls/parkbrake:>0)
+sw_iteminfo:Transponder|STANDBY:(laminar/A333/transponder/auto_on_knob_pos:-1)
+sw_iteminfo:Battery 1 & 2|ON:(sim/cockpit2/electrical/battery_on[0]:1)&&(sim/cockpit2/electrical/battery_on[1]:1)
+sw_iteminfo:External Power|EXTA ON:laminar/A333/buttons/ext_power_A_pos:1
+sw_iteminfo:APU Battery|ON:laminar/A333/buttons/APU_batt_pos:>0
+sw_iteminfo:APU Master|ON:laminar/A333/buttons/APU_master:1
+sw_iteminfo:APU Start|ON:laminar/A333/buttons/APU_start:1
+sw_iteminfo:APU Wait Ready|Yes:laminar/A333/fws_data/apu_avail:1
+sw_iteminfo:APU Generator|ON:laminar/A333/buttons/gen_apu_state:1
+sw_remark:Power ON
+sw_continue
+
+sw_checklist:Preflight - Electrical (2/2):Flight Systems
+sw_iteminfo:ADIRS1, ADIRS2, ADIRS3|ON:(laminar/A333/buttons/adirs/ir1_knob_pos:1)&&(laminar/A333/buttons/adirs/ir2_knob_pos:1)&&(laminar/A333/buttons/adirs/ir3_knob_pos:1)
+sw_iteminfo:IR1, IR2, IR3|ON:(laminar/A333/adirs/ir1_status:1)&&(laminar/A333/adirs/ir2_status:1)&&(laminar/A333/adirs/ir3_status:1)
+sw_iteminfo:ADR1, ADR2, ADR3|ON:(laminar/A333/adirs/adr1_status:1)&&(laminar/A333/adirs/adr2_status:1)&&(laminar/A333/adirs/adr3_status:1)
+sw_iteminfo:PAX System|ON:(laminar/A333/buttons/pax_sys_pos:1)
+sw_iteminfo:APU Bleed|ON:(laminar/A333/buttons/apu_bleed_pos:1)||(laminar/A333/ecam/bleed/crossbleed_target:1)
+sw_item:Enter MCDU|DONE
+sw_iteminfo:Turbulence Damper|ON:laminar/A333/buttons/fcc_turb_damp_pos:1
+sw_iteminfo:Primary Flight Control Computer 1, 2, & 3|ON:(laminar/A333/buttons/fcc_prim1_pos:1)&&(laminar/A333/buttons/fcc_prim2_pos:1)&&(laminar/A333/buttons/fcc_prim3_pos:1)
+sw_iteminfo:Secondary Flight Control Computer 1 & 2|ON:(laminar/A333/buttons/fcc_sec1_pos:1)&&(laminar/A333/buttons/fcc_sec2_pos:1)
+sw_iteminfo:Ground Proximity Aural Alerts|GPWS ON:(laminar/A333/buttons/gpws/terrain_status:1)&&(laminar/A333/buttons/gpws/system_status:1)&&(laminar/A333/buttons/gpws/glideslope_status:1)&&(laminar/A333/buttons/gpws/flap_status:1)
+sw_remark:Flight Systems ON
+sw_continue
+
+sw_checklist:Preflight - Fuel (1/2):Hydraulics
+sw_iteminfo:Engine 1 Green Pump|ON:(laminar/A330/buttons/hyd/elec_green_tog_pos:1)&&(laminar/A330/buttons/hyd/eng1_pump_green_pos:1)
+sw_iteminfo:Engine 1 Blue Pump|ON:(laminar/A330/buttons/hyd/elec_blue_tog_pos:1)&&(laminar/A330/buttons/hyd/eng1_pump_blue_pos:1)
+sw_iteminfo:Engine 1 Yellow Pump|ON:(laminar/A330/buttons/hyd/elec_yellow_tog_pos:1)&&(laminar/A330/buttons/hyd/eng2_pump_yellow_pos:1)
+sw_iteminfo:Engine 2 Green Pump|ON:(laminar/A330/buttons/hyd/eng2_pump_green_pos:1)
+#sw_iteminfo:Ram Air Turbine Deploy|ON:(laminar/A330/buttons/hyd/rat_deploy_pos:1)
+sw_remark:Hydraulic Systems ON
+sw_continue
+
+sw_checklist:Preflight - Fuel (2/2):Pumps
+sw_iteminfo:Engine 1 Fuel Pump Left 1, 2 & Standby|ON:(laminar/A333/fuel/buttons/left1_pump_pos:1)&&(laminar/A333/fuel/buttons/left2_pump_pos:1)&&(laminar/A333/fuel/buttons/left_stby_pump_pos:1)
+sw_iteminfo:Center Tank Left & Right|ON:(laminar/A333/fuel/buttons/center_left_pump_pos:1)&&(laminar/A333/fuel/buttons/center_right_pump_pos:1)
+sw_iteminfo:Engine 2 Fuel Pump Right 1, 2 & Standby|ON:(laminar/A333/fuel/buttons/right1_pump_pos:1)&&(laminar/A333/fuel/buttons/right2_pump_pos:1)&&(laminar/A333/fuel/buttons/right_stby_pump_pos:1)
+sw_iteminfo:Bus Cross Tie|ON:laminar/A333/buttons/bus_tie_pos:1
+sw_remark:Fuel Pumps ON
+sw_continue
+
+sw_checklist:Preflight - Engines:Start
+sw_iteminfo:Engine Ignition Rotary|START:sim/cockpit2/engine/actuators/eng_mode_selector:1
+sw_iteminfo:Engine 1 Start|ON:laminar/A333/switches/engine1_start_pos:1
+sw_iteminfo:Engine 1|Primed:sim/cockpit2/engine/indicators/N2_percent[0]:>60
+sw_iteminfo:Engine 2 Start|ON:laminar/A333/switches/engine2_start_pos:1
+sw_iteminfo:Engine 2|Primed:sim/cockpit2/engine/indicators/N2_percent[1]:>60
+sw_iteminfo:Engine Ignition Rotary|NORM:sim/cockpit2/engine/actuators/eng_mode_selector:0
+sw_iteminfo:Engine Generator 1 & 2|ON:(laminar/A333/buttons/gen1_pos:1)&&(laminar/A333/buttons/gen2_pos:1)
+sw_iteminfo:APU Generator|OFF:laminar/A333/buttons/gen_apu_pos:0
+sw_iteminfo:APU Bleed|OFF:(laminar/A333/buttons/apu_bleed_pos:0)||(laminar/A333/ecam/bleed/crossbleed_target:0)
+sw_iteminfo:Engine 1 & 2 Bleed|ON:(laminar/A333/buttons/eng_bleed_1_pos:1)&&(laminar/A333/buttons/eng_bleed_2_pos:1)
+sw_iteminfo:Engine Pack 1 & 2|ON:(laminar/A333/buttons/pack_1_pos:1)&&(laminar/A333/buttons/pack_2_pos:1)
+sw_iteminfo:APU Master|OFF:laminar/A333/buttons/APU_master:0
+sw_iteminfo:Beacon Lights|ON:sim/cockpit2/switches/beacon_on:1
+sw_iteminfo:NAV Lights|ON:laminar/a333/switches/nav_pos:>0
+sw_remark:Engines ON
+sw_continue
+

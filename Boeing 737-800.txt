@@ -1,0 +1,50 @@
+#Laminar Boeing 737-800
+#by ch4dwick - 2024/07/22
+#Updated for X-Plane 12 as per page 65 https://x-plane.com/manuals/737_Pilot_Operating_Manual.pdf
+sw_checklist:Preflight 1:Preflight Electrical & Hydraulics
+sw_iteminfo:Parking Brake|SET:(sim/flightmodel/controls/parkbrake:>0)
+sw_iteminfo:Main Battery|ON:sim/cockpit2/electrical/battery_on[0]:1
+sw_iteminfo:Standby Power|AUTO:sim/cockpit2/electrical/battery_on[0]:1
+sw_iteminfo:Call Ground Handling|START:laminar/B738/annunciator/ground_power_avail:>0
+sw_iteminfo:Ground Power|CONNECT AND ON:sim/cockpit/electrical/gpu_on:1
+sw_iteminfo:APU|START:sim/cockpit/engine/APU_running:1
+sw_iteminfo:Bus Transfer|AUTO:sim/cockpit2/electrical/cross_tie:1
+sw_iteminfo:APU Wait for GEN OFF BUS|ON:laminar/B738/annunciator/apu_gen_off_bus:>0
+sw_iteminfo:APU Generator 1 and 2|ON:(laminar/B738/electrical/apu_genR_status:1)&&(laminar/B738/electrical/apu_genR_status:1)
+sw_iteminfo:Stop Ground Handling|STOPPED:laminar/B738/annunciator/ground_power_avail:0
+sw_iteminfo:Ground Power|DISCONNECT AND OFF:sim/cockpit/electrical/gpu_on:0
+sw_iteminfo:Fuel Tank Pumps|ON:(laminar/B738/sounds/fuel_pump1_status:1)&&(laminar/B738/sounds/fuel_pump2_status:1)&&(laminar/B738/sounds/fuel_pump3_status:1)
+sw_iteminfo:APU Bleed Air|ON:sim/cockpit2/bleedair/actuators/apu_bleed:1
+sw_iteminfo:Electrical Hydraulic Pumps|ON:(sim/cockpit2/switches/electric_hydraulic_pump_on:1)&&(sim/cockpit2/switches/electric_hydraulic_pump2_on:1)
+sw_iteminfo:Engine Hydraulic Pumps|ON:(sim/cockpit2/hydraulics/actuators/engine_pump[0]:1)&&(sim/cockpit2/hydraulics/actuators/engine_pump[1]:1)
+sw_iteminfo:Master Caution|DISENGAGE:(sim/cockpit/warnings/master_caution_on:0)
+sw_item:Interior Lights as required (Pedestal, Main Panel, Overhead Panel)
+sw_remark:External Lights|
+sw_iteminfo:    - Wheel well, Logo, Wing|ON:(sim/cockpit2/switches/generic_lights_switch[1]:1)&&(sim/cockpit2/switches/generic_lights_switch[0]:1)&&(sim/cockpit2/switches/generic_lights_switch[5]:1)
+sw_iteminfo:Seatbelt sign|AUTO:(sim/cockpit/switches/fasten_seat_belts:1)
+sw_item:Enter flight route into FMC
+sw_continue
+
+sw_checklist:Preflight 2:Preflight Engine Priming
+sw_iteminfo:Engine 1 Ignition|GRD:laminar/B738/spring_knob/starter_1:-1
+sw_iteminfo:Engine 1 OIL FILTER BYPASS AND LOW OIL PRESSURE|OFF:(sim/cockpit/warnings/annunciators/fuel_pressure_low[0]:0)&&(sim/cockpit/warnings/annunciators/oil_pressure_low[0]:0)
+sw_iteminfo:Engine 1 Fuel Control Lever|UP:laminar/B738/annunciator/eng1_valve_closed:0
+sw_iteminfo:Engine 2 Ignition|GRD:laminar/B738/spring_knob/starter_2:-1
+sw_iteminfo:Engine 1 OIL FILTER BYPASS AND LOW OIL PRESSURE|OFF:(sim/cockpit/warnings/annunciators/fuel_pressure_low[1]:0)&&(sim/cockpit/warnings/annunciators/oil_pressure_low[1]:0)
+sw_iteminfo:Engine 2 Fuel Control Lever|UP:laminar/B738/annunciator/eng2_valve_closed:0
+sw_iteminfo:Engine Generator 1 and 2|ON:(sim/cockpit2/electrical/generator_on[0]:1)&&(sim/cockpit2/electrical/generator_on[1]:1)
+sw_iteminfo:APU Generator 1 and 2|OFF:(laminar/B738/electrical/apu_genR_status:0)&&(laminar/B738/electrical/apu_genR_status:0)
+sw_iteminfo:APU Bleed Air|OFF:sim/cockpit2/bleedair/actuators/apu_bleed:0
+sw_iteminfo:APU|OFF:sim/cockpit/engine/APU_running:0
+sw_continue
+
+sw_checklist:Shutdown:Shutdown
+sw_iteminfo:Parking Brake|SET:(sim/flightmodel/controls/parkbrake:>0)
+sw_iteminfo:Transponder Standby|STBY:sim/cockpit/radios/transponder_mode:1
+sw_iteminfo:Engine Generator 1 and 2|OFF:(sim/cockpit2/electrical/generator_on[0]:0)&&(sim/cockpit2/electrical/generator_on[1]:0)
+sw_item:Engine 1 & 2 Fuel Control Lever|DOWN
+sw_iteminfo:Engine Hydraulic Pumps|OFF:(sim/cockpit2/hydraulics/actuators/engine_pump[0]:0)&&(sim/cockpit2/hydraulics/actuators/engine_pump[1]:0)
+sw_iteminfo:Electrical Hydraulic Pumps|OFF:(sim/cockpit2/switches/electric_hydraulic_pump_on:0)&&(sim/cockpit2/switches/electric_hydraulic_pump2_on:0)
+sw_iteminfo:Fuel Tank Pumps|ON:(sim/cockpit2/fuel/fuel_tank_pump_on[0]:0)&&(sim/cockpit2/fuel/fuel_tank_pump_on[1]:0)&&(sim/cockpit2/fuel/fuel_tank_pump_on[2]:0)
+sw_iteminfo:Main Battery|ON:sim/cockpit2/electrical/battery_on[0]:0
+sw_iteminfo:Standby Power|OFF:sim/cockpit2/electrical/battery_on[0]:0

@@ -1,0 +1,35 @@
+#Laminar Beechcraft Baron 58
+#by ch4dwick - 2024/09/16
+#Updated for X-Plane 12 as per page 49 https://x-plane.com/manuals/737_Pilot_Operating_Manual.pdf
+sw_checklist:Preflight(1/2):Electronics
+sw_iteminfo:Landing Gear DOWN|SET:(laminar/b58/gear/handle:1)
+sw_iteminfo:Parking Brake|SET:(sim/cockpit2/controls/parking_brake_ratio:>0)
+sw_iteminfo:Master Battery|ON:(sim/cockpit2/electrical/battery_on[0]:1)
+sw_iteminfo:Taxi Lights ON|SET:(sim/cockpit2/switches/taxi_light_on:1)
+sw_iteminfo:Nav Lights ON|SET:(sim/cockpit2/switches/navigation_lights_on:1)
+sw_iteminfo:Beacon Lights ON|SET:(sim/cockpit2/switches/beacon_on:1)
+sw_iteminfo:Strobe Lights ON|SET:(sim/cockpit2/switches/strobe_lights_on:1)
+sw_continue
+
+sw_checklist:Preflight(2/2):Fuel
+sw_iteminfo:Throttle Slightly Forward|SET:(sim/cockpit2/engine/actuators/throttle_ratio_all:>0)
+sw_iteminfo:Prop Lever FULL|SET:(sim/cockpit2/engine/actuators/prop_rotation_speed_rad_sec_all:>230)
+sw_iteminfo:Mixture Lever FULL|SET:(sim/cockpit2/engine/actuators/mixture_ratio_all:1)
+sw_iteminfo:Fuel Indicator|CHECKED:(sim/cockpit2/fuel/fuel_level_indicated_left:>0)||(sim/cockpit2/fuel/fuel_level_indicated_right:>0)
+sw_continue
+
+sw_checklist:Engines:Start
+sw_iteminfo:Alternator 1 or 2|ON:(sim/cockpit2/electrical/generator_on[0]:1)&&(sim/cockpit2/electrical/generator_on[1]:1)
+sw_iteminfo:Left Engine Ignition|HOLD:(sim/cockpit2/engine/actuators/ignition_key[0]:4)
+sw_iteminfo:Left Engine Ignition Start|ON:(sim/cockpit2/engine/indicators/prop_speed_rpm[0]:>800)
+sw_iteminfo:Right Engine Ignition|HOLD:(sim/cockpit2/engine/actuators/ignition_key[1]:4)
+sw_iteminfo:Right Engine Ignition Start|ON:(sim/cockpit2/engine/indicators/prop_speed_rpm[1]:>800)
+sw_continue
+
+sw_checklist:Avionics:Start
+sw_iteminfo:Avionics|ON:(sim/cockpit2/switches/avionics_power_on:1)
+sw_iteminfo:Prop Sync|ON:(sim/cockpit2/switches/prop_sync_on:1)
+sw_continue
+
+sw_checklist:Before Taxi:
+sw_iteminfo:Transponder ON|SET:(sim/cockpit2/radios/actuators/transponder_mode:2)
